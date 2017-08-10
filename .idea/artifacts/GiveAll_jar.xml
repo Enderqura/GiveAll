@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GiveAll:jar">
+    <output-path>$USER_HOME$/Desktop/Random Folders/Server/Test Server - Copy - Copy/plugins</output-path>
+    <root id="archive" name="GiveAll.jar">
+      <element id="module-output" name="GiveAll" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/plugin.yml" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,14 @@
+main: com.oasisdevs.giveall.GiveAll
+name: GiveAll
+version: 1.0
+author: Enderqura
+
+commands:
+  giveall:
+    description: Give every online player the item in your hand
+    usage: /<command>
+    permission: giveall.giveall
+  give:
+    description: Give the specified player an item
+    usage: /<command>
+    permission: giveall.give
