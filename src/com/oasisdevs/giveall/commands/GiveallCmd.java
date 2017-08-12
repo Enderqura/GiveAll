@@ -9,9 +9,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Enderqura on 03/07/2017 at 19:33.
  */
@@ -41,8 +38,15 @@ public class GiveallCmd implements CommandExecutor {
 
 
                         }
+                        if(itemName != null) {
+                            Bukkit.broadcastMessage(ChatColor.BLUE + player.getName() + ChatColor.AQUA + " gave everyone " + ChatColor.BLUE + amount + " " + itemName + ChatColor.BLUE + " (" + itemType + ")" + ChatColor.AQUA + "!");
+                        }
 
-                        Bukkit.broadcastMessage(ChatColor.BLUE + player.getName() + ChatColor.AQUA + " gave everyone " + ChatColor.BLUE + amount + " " + itemName + ChatColor.BLUE + " (" + itemType + ")" + ChatColor.AQUA + "!");
+                        else{
+
+                            Bukkit.broadcastMessage(ChatColor.BLUE + player.getName() + ChatColor.AQUA + " gave everyone " + ChatColor.BLUE + amount + " " + itemType + ChatColor.AQUA + "!");
+                        }
+
 
                         return true;
 
@@ -62,12 +66,25 @@ public class GiveallCmd implements CommandExecutor {
                             return true;
 
                         }
+                        ItemStack item = player.getItemInHand();
+                        String amount = String.valueOf(item.getAmount());
+                        String itemName = item.getItemMeta().getDisplayName();
+                        String itemType = item.getType().name();
 
                         for(Entity entity : player.getNearbyEntities(radius, radius, radius)){
 
                             if(entity instanceof Player){
 
-                                ((Player) entity).getInventory().addItem()
+                                if(itemName != null) {
+                                    entity.sendMessage(ChatColor.BLUE + player.getName() + ChatColor.AQUA + " gave everyone " + ChatColor.BLUE + amount + " " + itemName + ChatColor.BLUE + " (" + itemType + ")" + ChatColor.AQUA + "!");
+                                }
+
+                                else{
+                                    entity.sendMessage(ChatColor.BLUE + player.getName() + ChatColor.AQUA + " gave everyone " + ChatColor.BLUE + amount + " " + itemType + ChatColor.AQUA + "!");
+                                }
+
+
+                                ((Player) entity).getInventory().addItem(item);
 
                             }
 
